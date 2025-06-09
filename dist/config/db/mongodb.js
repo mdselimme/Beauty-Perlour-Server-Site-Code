@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.services = exports.client = void 0;
+exports.orders = exports.services = exports.client = void 0;
 const mongodb_1 = require("mongodb");
 require("dotenv/config");
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.hf2pl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
@@ -14,3 +14,4 @@ exports.client = new mongodb_1.MongoClient(uri, {
 });
 const db = exports.client.db("BeautifulPerlour");
 exports.services = db.collection("service");
+exports.orders = db.collection("bookorder");
