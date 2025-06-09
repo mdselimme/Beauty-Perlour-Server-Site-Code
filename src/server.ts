@@ -1,5 +1,5 @@
 import app from "./app/app";
-import { client } from "./db/mongodb";
+import { client } from "./config/db/mongodb";
 const PORT = process.env.PORT || 5000;
 
 
