@@ -13,3 +13,6 @@ export const client = new MongoClient(uri, {
         deprecationErrors: true,
     }
 });
+
+const db = client.db("BeautifulPerlour");
+export const services = db.collection("service");
