@@ -12,6 +12,6 @@ const service_routes_1 = __importDefault(require("../routers/service.routes"));
 // USE ALL ROUTER 
 app.use('/services', service_routes_1.default);
 app.get('/', (req, res) => {
-    res.send("Jerins Perlour Server Site Running......");
+    res.send("Jerins Perlour Server Site Running...");
 });
 exports.default = app;

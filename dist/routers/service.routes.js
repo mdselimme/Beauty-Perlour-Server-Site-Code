@@ -15,8 +15,19 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const mongodb_1 = require("../config/db/mongodb");
 const serviceRouter = express_1.default.Router({ mergeParams: true });
+// GET ALL SERVICES DATA 
 serviceRouter.get('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const servicesData = yield mongodb_1.services.find({}).toArray();
-    console.log(servicesData);
+    try {
+        const servicesData = yield mongodb_1.services.find({}).toArray();
+        res.json(servicesData);
+    }
+    catch (error) {
+        if (error instanceof Error) {
+            res.json({ message: error.message });
+        }
+        else {
+            res.json({ message: 'An unknown error occurred.' });
+        }
+    }
 }));
 exports.default = serviceRouter;
