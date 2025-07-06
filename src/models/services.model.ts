@@ -29,6 +29,9 @@ const ServicesSchemaModel = new Schema<IServices>({
         required: [true, "price is required"],
         trim: true
     },
+}, {
+    versionKey: false,
+    timestamps: true
 });
 
 const Services = model("Services", ServicesSchemaModel);
