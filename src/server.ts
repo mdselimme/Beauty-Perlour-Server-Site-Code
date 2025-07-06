@@ -1,9 +1,10 @@
 import mongoose from "mongoose";
+import { Server } from "http";
 import app from "./app/app";
 const PORT = process.env.PORT || 5000;
 
 
-let server;
+let server: Server;
 
 const bootstrap = async () => {
     try {

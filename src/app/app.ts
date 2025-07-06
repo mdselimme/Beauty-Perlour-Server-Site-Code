@@ -1,7 +1,8 @@
 import express, { Application, Request, Response } from "express";
 const app: Application = express();
 import cors from "cors";
-
+import dotenv from "dotenv";
+dotenv.config();
 app.use(cors());
 
 
@@ -22,6 +23,11 @@ app.get('/', (req: Request, res: Response) => {
     res.send("Jerins Perlour Server Site Running...")
 });
 
+app.use((req: Request, res: Response) => {
+    res.json({
+        message: "No Route Match."
+    })
+});
 
 
 export default app;
