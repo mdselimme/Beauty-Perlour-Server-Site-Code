@@ -1,5 +1,4 @@
 import express, { Request, Response } from "express";
-import { orders } from "../config/db/mongodb";
 import { ObjectId } from "mongodb";
 const ordersRouter = express.Router({ mergeParams: true });
 

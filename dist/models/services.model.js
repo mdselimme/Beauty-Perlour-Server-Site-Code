@@ -1,8 +1,7 @@
-import { model, Schema } from "mongoose";
-import { IServices } from "../interfaces/services.interface";
-
-
-const ServicesSchemaModel = new Schema<IServices>({
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const mongoose_1 = require("mongoose");
+const ServicesSchemaModel = new mongoose_1.Schema({
     title: {
         type: String,
         required: [true, "title is required"],
@@ -20,7 +19,7 @@ const ServicesSchemaModel = new Schema<IServices>({
         trim: true,
         validate: {
             validator: (val) => {
-                return val !== 0 && typeof val === "number"
+                return val !== 0 && typeof val === "number";
             }
         }
     },
@@ -33,7 +32,5 @@ const ServicesSchemaModel = new Schema<IServices>({
     versionKey: false,
     timestamps: true
 });
-
-const Services = model("Services", ServicesSchemaModel);
-
-export default Services;
+const Services = (0, mongoose_1.model)("Services", ServicesSchemaModel);
+exports.default = Services;
