@@ -5,13 +5,21 @@ import Services from "../models/services.model";
 // Get All Serivices 
 export const getAllServices = async (req: Request, res: Response) => {
     try {
-        const servicesData = await Services.find({});
-        res.json(servicesData);
+        // call from database 
+        const servicesResults = await Services.find({});
+        // send response 
+        res.status(201).json({
+            success: true,
+            message: "Service Retrieved Successfully",
+            data: servicesResults
+        });
     } catch (error) {
         if (error instanceof Error) {
-            res.json({ message: error.message });
-        } else {
-            res.json({ message: 'An unknown error occurred.' });
+            res.status(201).json({
+                success: false,
+                message: error.message,
+                data: null
+            });
         }
     }
 };
@@ -19,14 +27,23 @@ export const getAllServices = async (req: Request, res: Response) => {
 // Get A Single Services by id
 export const getASingleService = async (req: Request, res: Response) => {
     try {
+        // object id 
         const paramId = req.params.id;
-        const serviceData = await Services.findById(paramId);
-        res.json(serviceData);
+        // get service from database 
+        const serviceResult = await Services.findById(paramId);
+        // send response 
+        res.status(201).json({
+            success: true,
+            message: "Service Retrieved Successfully",
+            data: serviceResult
+        });
     } catch (error) {
         if (error instanceof Error) {
-            res.json({ message: error.message });
-        } else {
-            res.json({ message: 'An unknown error occurred.' });
+            res.status(201).json({
+                success: false,
+                message: error.message,
+                data: null
+            });
         }
     };
 }

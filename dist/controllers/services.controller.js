@@ -17,15 +17,22 @@ const services_model_1 = __importDefault(require("../models/services.model"));
 // Get All Serivices 
 const getAllServices = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const servicesData = yield services_model_1.default.find({});
-        res.json(servicesData);
+        // call from database 
+        const servicesResults = yield services_model_1.default.find({});
+        // send response 
+        res.status(201).json({
+            success: true,
+            message: "Service Retrieved Successfully",
+            data: servicesResults
+        });
     }
     catch (error) {
         if (error instanceof Error) {
-            res.json({ message: error.message });
-        }
-        else {
-            res.json({ message: 'An unknown error occurred.' });
+            res.status(201).json({
+                success: false,
+                message: error.message,
+                data: null
+            });
         }
     }
 });
@@ -33,16 +40,24 @@ exports.getAllServices = getAllServices;
 // Get A Single Services by id
 const getASingleService = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        // object id 
         const paramId = req.params.id;
-        const serviceData = yield services_model_1.default.findById(paramId);
-        res.json(serviceData);
+        // get service from database 
+        const serviceResult = yield services_model_1.default.findById(paramId);
+        // send response 
+        res.status(201).json({
+            success: true,
+            message: "Service Retrieved Successfully",
+            data: serviceResult
+        });
     }
     catch (error) {
         if (error instanceof Error) {
-            res.json({ message: error.message });
-        }
-        else {
-            res.json({ message: 'An unknown error occurred.' });
+            res.status(201).json({
+                success: false,
+                message: error.message,
+                data: null
+            });
         }
     }
     ;

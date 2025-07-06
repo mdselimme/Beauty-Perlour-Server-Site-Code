@@ -6,6 +6,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const app = (0, express_1.default)();
 const cors_1 = __importDefault(require("cors"));
+const dotenv_1 = __importDefault(require("dotenv"));
+dotenv_1.default.config();
 app.use((0, cors_1.default)());
 // IMPORT ALL ROUTER 
 const service_routes_1 = __importDefault(require("../routers/service.routes"));
@@ -17,5 +19,10 @@ app.use('/users', users_routes_1.default);
 app.use('/orders', orders_routes_1.default);
 app.get('/', (req, res) => {
     res.send("Jerins Perlour Server Site Running...");
+});
+app.use((req, res) => {
+    res.json({
+        message: "No Route Match."
+    });
 });
 exports.default = app;
