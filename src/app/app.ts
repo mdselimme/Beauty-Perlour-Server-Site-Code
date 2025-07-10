@@ -7,16 +7,17 @@ app.use(cors());
 
 
 // IMPORT ALL ROUTER 
-import serviceRouter from "../routers/service.routes";
-import usersRouter from "../routers/users.routes";
-import ordersRouter from "../routers/orders.routes";
+import serviceRouter from "../modules/services/service.routes";
+import usersRouter from "../modules/users/users.routes";
+import ordersRouter from "../modules/orders/orders.routes";
+
 
 
 
 // USE ALL ROUTER 
-app.use('/services', serviceRouter);
-app.use('/users', usersRouter);
-app.use('/orders', ordersRouter);
+app.use('api/v1/services', serviceRouter);
+app.use('api/v1/users', usersRouter);
+app.use('api/v1/orders', ordersRouter);
 
 
 app.get('/', (req: Request, res: Response) => {

@@ -1,5 +1,5 @@
 import express from 'express';
-import { getAllServices, getASingleService } from '../controllers/services.controller';
+import { getAllServices, getASingleService } from './services.controller';
 const serviceRouter = express.Router({ mergeParams: true });
 
 
