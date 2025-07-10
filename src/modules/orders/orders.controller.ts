@@ -1,17 +1,18 @@
 import { Request, Response } from "express";
-import Services from "../models/services.model";
+import OrdersBooking from "./orders.model";
 
 
-// Get All Serivices 
-export const getAllServices = async (req: Request, res: Response) => {
+
+// Get All Bookings Orders 
+export const getAllBookingOrder = async (req: Request, res: Response) => {
     try {
-        // call from database 
-        const servicesResults = await Services.find({});
+        // get data from database 
+        const ordersResults = await OrdersBooking.find({});
         // send response 
         res.status(201).json({
             success: true,
-            message: "Service Retrieved Successfully",
-            data: servicesResults
+            message: "Orders Retrieved Successfully",
+            data: ordersResults
         });
     } catch (error) {
         if (error instanceof Error) {
@@ -24,18 +25,18 @@ export const getAllServices = async (req: Request, res: Response) => {
     }
 };
 
-// Get A Single Services by id
-export const getASingleService = async (req: Request, res: Response) => {
+// Get A Booking Order 
+export const getABookingOrder = async (req: Request, res: Response) => {
     try {
-        // object id 
+        // get order object id 
         const paramId = req.params.id;
-        // get service from database 
-        const serviceResult = await Services.findById(paramId);
+        // get order from db 
+        const orderResult = await OrdersBooking.findById(paramId);
         // send response 
         res.status(201).json({
             success: true,
-            message: "Service Retrieved Successfully",
-            data: serviceResult
+            message: "Order Retrieved Successfully",
+            data: orderResult
         });
     } catch (error) {
         if (error instanceof Error) {
