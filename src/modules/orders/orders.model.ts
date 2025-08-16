@@ -18,6 +18,7 @@ const OrdersBookingSchemaModel = new Schema<IBookingOrder>({
         type: String,
         required: [true, "email is required"],
         trim: true,
+        unique: true
     },
     phone: {
         type: String,
